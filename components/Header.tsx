@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { Menu } from "lucide-react";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import OptimizedImage from "./OptimizedImage";
+import { imagePaths } from "@/utils/imagePaths";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,13 +26,13 @@ export default function Header() {
           <div className="flex items-center -ml-2 sm:-ml-3 lg:-ml-4">
             <OptimizedImage
               webpSrc={
-                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
               }
               avifSrc={
-                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
               }
               fallbackSrc={
-                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
               }
               alt="FinBank Logo"
               className="h-8 sm:h-10 md:h-12 w-auto"

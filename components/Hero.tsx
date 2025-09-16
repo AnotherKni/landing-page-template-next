@@ -3,20 +3,21 @@
 import { useState, useEffect } from "react";
 import AnimatedSection from "./AnimatedSection";
 import OptimizedBackgroundImage from "./OptimizedBackgroundImage";
+import { imagePaths } from "@/utils/imagePaths";
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [
     {
-      webp: "/images/optimized/background-1.webp",
-      avif: "/images/optimized/background-1.avif",
-      fallback: "/images/background-1.jpg",
+      webp: imagePaths.backgrounds.bg1.webp,
+      avif: imagePaths.backgrounds.bg1.avif,
+      fallback: imagePaths.backgrounds.bg1.fallback,
       alt: "Background 1",
     },
     {
-      webp: "/images/optimized/background-2.webp",
-      avif: "/images/optimized/background-2.avif",
-      fallback: "/images/background-2.jpg",
+      webp: imagePaths.backgrounds.bg2.webp,
+      avif: imagePaths.backgrounds.bg2.avif,
+      fallback: imagePaths.backgrounds.bg2.fallback,
       alt: "Background 2",
     },
   ];
