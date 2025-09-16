@@ -10,9 +10,9 @@
     "analyze": "ANALYZE=true next build",
     "build:prod": "NODE_ENV=production next build",
     "build:modern": "NODE_ENV=production next build",
-    "optimize-images": "node scripts/optimize-images.js",
-    "create-logo": "node scripts/create-logo.js",
-    "analyze-bundle": "node scripts/analyze-bundle.js"
+    "build:github": "cross-env NODE_ENV=production next build",
+    "deploy:github": "node scripts/deploy-github-pages.js",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -26,15 +26,12 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.28.3",
-    "@babel/runtime": "^7.28.4",
     "@next/bundle-analyzer": "^15.5.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
-    "babel-plugin-import": "^1.13.8",
-    "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^10.0.0",
     "cssnano": "^7.1.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
