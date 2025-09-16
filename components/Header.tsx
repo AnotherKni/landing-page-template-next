@@ -20,18 +20,24 @@ export default function Header() {
         isScrolled ? "bg-white shadow-lg backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 lg:px-8">
-          <div className="flex items-center">
+      <div className="w-full">
+        <div className="flex justify-between items-center py-3 sm:py-4 pl-3 sm:pl-4 lg:pl-8 pr-3 sm:pr-4 lg:pr-8">
+          <div className="flex items-center -ml-2 sm:-ml-3 lg:-ml-4">
             <OptimizedImage
-              webpSrc="/images/optimized/logo.webp"
-              avifSrc="/images/optimized/logo.avif"
-              fallbackSrc="/images/logo.png"
+              webpSrc={
+                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+              }
+              avifSrc={
+                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+              }
+              fallbackSrc={
+                isScrolled ? "/images/noBgColor.png" : "/images/noBgWhite.png"
+              }
               alt="FinBank Logo"
-              className="h-6 sm:h-8 w-auto"
+              className="h-8 sm:h-10 md:h-12 w-auto"
               priority={true}
-              width={120}
-              height={32}
+              width={180}
+              height={48}
             />
           </div>
 

@@ -4,7 +4,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  swcMinify: true,
   experimental: {
     esmExternals: true,
   },
@@ -21,7 +20,6 @@ const nextConfig = {
   },
   poweredByHeader: false,
   compress: true,
-  swcMinify: true,
   reactStrictMode: true,
   generateEtags: false,
   httpAgentOptions: {
@@ -40,6 +38,12 @@ const nextConfig = {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",
             chunks: "all",
+          },
+          styles: {
+            name: "styles",
+            test: /\.(css|scss)$/,
+            chunks: "all",
+            enforce: true,
           },
         },
       };

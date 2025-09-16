@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Play } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import OptimizedBackgroundImage from "./OptimizedBackgroundImage";
 
@@ -79,23 +78,6 @@ export default function Hero() {
             </div>
           </AnimatedSection>
         </div>
-
-        <AnimatedSection delay={600}>
-          <div className="mt-12 sm:mt-16 px-4">
-            <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
-              <div className="aspect-video bg-gradient-to-r from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-800 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-600 px-4">
-                    App FinBank - Gerencie suas finanças
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
 
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10">
