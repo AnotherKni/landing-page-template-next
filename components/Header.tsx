@@ -4,7 +4,6 @@ import { useState, useCallback } from "react";
 import { Menu } from "lucide-react";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import OptimizedImage from "./OptimizedImage";
-import { imagePaths } from "@/utils/imagePaths";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,17 +21,17 @@ export default function Header() {
       }`}
     >
       <div className="w-full">
-        <div className="flex justify-between items-center py-3 sm:py-4 pl-3 sm:pl-4 lg:pl-8 pr-3 sm:pr-4 lg:pr-8">
+        <div className="flex items-center justify-between py-3 sm:py-4 pl-3 sm:pl-4 lg:pl-8 pr-3 sm:pr-4 lg:pr-8">
           <div className="flex items-center -ml-2 sm:-ml-3 lg:-ml-4">
             <OptimizedImage
               webpSrc={
-                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
+                isScrolled ? "/images/logo-color.png" : "/images/noBgWhite.png"
               }
               avifSrc={
-                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
+                isScrolled ? "/images/logo-color.png" : "/images/noBgWhite.png"
               }
               fallbackSrc={
-                isScrolled ? imagePaths.logo.color : imagePaths.logo.white
+                isScrolled ? "/images/logo-color.png" : "/images/noBgWhite.png"
               }
               alt="FinBank Logo"
               className="h-8 sm:h-10 md:h-12 w-auto"
@@ -42,7 +41,7 @@ export default function Header() {
             />
           </div>
 
-          <nav className="hidden lg:flex space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex space-x-6 xl:space-x-8 absolute left-1/2 transform -translate-x-1/2">
             <a
               href="#home"
               className={`transition-colors duration-300 text-sm xl:text-base ${
@@ -85,7 +84,7 @@ export default function Header() {
             </a>
           </nav>
 
-          <div className="hidden lg:flex space-x-2 lg:space-x-4">
+          <div className="hidden lg:flex space-x-2 lg:space-x-4 items-center">
             <button
               className={`font-semibold py-2 px-3 lg:py-3 lg:px-6 rounded-lg border-2 transition-all duration-300 text-xs lg:text-sm ${
                 isScrolled

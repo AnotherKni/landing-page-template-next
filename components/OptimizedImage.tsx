@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 interface OptimizedImageProps {
   webpSrc: string;
@@ -30,6 +30,10 @@ export default function OptimizedImage({
 }: OptimizedImageProps) {
   const [imageError, setImageError] = useState(false);
 
+  const handleError = useCallback(() => {
+    setImageError(true);
+  }, []);
+
   if (imageError) {
     return (
       <Image
@@ -41,7 +45,6 @@ export default function OptimizedImage({
         height={height}
         fill={fill}
         sizes={sizes}
-        onError={() => setImageError(true)}
       />
     );
   }
@@ -59,7 +62,7 @@ export default function OptimizedImage({
         height={height}
         fill={fill}
         sizes={sizes}
-        onError={() => setImageError(true)}
+        onError={handleError}
       />
     </picture>
   );
