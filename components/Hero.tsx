@@ -1,0 +1,119 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Play } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
+import OptimizedBackgroundImage from "./OptimizedBackgroundImage";
+
+export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    {
+      webp: "/images/optimized/background-1.webp",
+      avif: "/images/optimized/background-1.avif",
+      fallback: "/images/background-1.jpg",
+      alt: "Background 1",
+    },
+    {
+      webp: "/images/optimized/background-2.webp",
+      avif: "/images/optimized/background-2.avif",
+      fallback: "/images/background-2.jpg",
+      alt: "Background 2",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <section
+      id="home"
+      className="relative pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden min-h-screen flex items-center"
+    >
+      <div className="absolute inset-0">
+        {images.map((image, index) => (
+          <OptimizedBackgroundImage
+            key={index}
+            webpSrc={image.webp}
+            avifSrc={image.avif}
+            fallbackSrc={image.fallback}
+            alt={image.alt}
+            className={`absolute inset-0 ${
+              index === currentImage ? "opacity-100" : "opacity-0"
+            }`}
+            priority={index === 0}
+          />
+        ))}
+        <div className="absolute inset-0 bg-black bg-opacity-40" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 w-full">
+        <div className="text-center max-w-4xl mx-auto">
+          <AnimatedSection delay={0}>
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+              style={{ fontSize: "clamp(1.875rem, 4vw, 3.75rem)" }}
+            >
+              Seu <span className="text-primary-400">banco digital</span> do
+              futuro
+            </h1>
+          </AnimatedSection>
+          <AnimatedSection delay={200}>
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+              Conta corrente gratuita, cartão sem anuidade, investimentos e
+              empréstimos com as melhores taxas do mercado.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={400}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <button className="bg-primary-800 hover:bg-primary-900 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-colors duration-200 text-base sm:text-lg shadow-lg w-full sm:w-auto">
+                Abrir Conta Grátis
+              </button>
+              <button className="bg-white hover:bg-gray-100 text-primary-800 font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg border-2 border-white transition-colors duration-200 text-base sm:text-lg shadow-lg w-full sm:w-auto">
+                Simular Empréstimo
+              </button>
+            </div>
+          </AnimatedSection>
+        </div>
+
+        <AnimatedSection delay={600}>
+          <div className="mt-12 sm:mt-16 px-4">
+            <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
+              <div className="aspect-video bg-gradient-to-r from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-800 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                  </div>
+                  <p className="text-sm sm:text-base text-gray-600 px-4">
+                    App FinBank - Gerencie suas finanças
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="flex space-x-2 sm:space-x-3">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImage(index)}
+              aria-label={`Ir para imagem ${index + 1}`}
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors duration-300 ${
+                index === currentImage
+                  ? "bg-primary-400"
+                  : "bg-white bg-opacity-50 hover:bg-opacity-75"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

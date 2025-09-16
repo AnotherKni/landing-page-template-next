@@ -1,0 +1,14 @@
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.{js,jsx,ts,tsx}": ["@parcel/transformer-js", "@parcel/transformer-react-refresh-wrap"],
+    "*.{css,scss}": ["@parcel/transformer-css"],
+    "*.{html,htm}": ["@parcel/transformer-html"]
+  },
+  "bundler": {
+    "minify": true,
+    "treeShaking": true,
+    "scopeHoisting": true,
+    "sourceMaps": true
+  }
+}
